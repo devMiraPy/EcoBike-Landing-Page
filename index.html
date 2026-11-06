@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoBike SP – Aluguel de bicicletas por hora</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#inicio"><i></i>EcoBike SP</a>
+    <nav id="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#valores">Por que EcoBike</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="#como">Como reservar</a></li>
+        <li><a href="#reservas">Pré-reservas</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="theme" aria-label="Ativar modo escuro" title="Modo escuro">🌙</button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <h1>A cidade fica menor sobre duas rodas.</h1>
+      <p>A EcoBike SP aluga bicicletas urbanas, elétricas e cargo por hora, com estações espalhadas por São Paulo. Pegue em uma, devolva em outra.</p>
+      <div class="cta">
+        <a class="btn" href="#simulador">Simular meu preço</a>
+        <a class="btn ghost" href="#planos">Ver planos</a>
+      </div>
+    </div>
+    <div class="lane" aria-hidden="true">
+      <svg viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="44" r="16"/><circle cx="96" cy="44" r="16"/><path d="M24 44 44 20h28M44 20l14 24h38L72 20M38 12h12M80 12 72 20"/></svg>
+    </div>
+  </div>
+
+  <section id="valores">
+    <div class="wrap">
+      <h2>Mobilidade que cabe no seu dia</h2>
+      <p class="lead">Sem comprar, sem guardar, sem manutenção. Você paga só pelo tempo que pedala.</p>
+      <div class="values">
+        <div><h3>Estações por toda a cidade</h3><p>Retire e devolva em qualquer estação, perto do metrô, de parques e de ciclovias.</p></div>
+        <div><h3>Preço claro por hora</h3><p>Sem taxa de adesão e sem letras miúdas. Passou de 5 horas, você ganha 10% de desconto.</p></div>
+        <div><h3>Mais leve para o planeta</h3><p>Cada trajeto trocado do carro para a bike deixa o ar de São Paulo um pouco melhor.</p></div>
+        <div><h3>Pedale de dia ou de noite</h3><p>Bikes com farol e lanterna, e um modo escuro neste site para quem sai depois do pôr do sol.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" style="background:var(--green-soft)">
+    <div class="wrap">
+      <h2>Escolha sua bike</h2>
+      <p class="lead">Três planos, um valor por hora. Você escolhe o que combina com o seu trajeto.</p>
+      <div class="plans">
+        <article class="card">
+          <h3>Urbana</h3>
+          <div class="price">R$ 12<small>/hora</small></div>
+          <ul><li>Quadro leve e confortável</li><li>Cesta e cadeado inclusos</li><li>Ideal para trajetos curtos</li></ul>
+          <a class="btn ghost" href="#simulador" data-bike="urbana">Simular Urbana</a>
+        </article>
+        <article class="card pop">
+          <span class="tag">Mais pedida</span>
+          <h3>Elétrica</h3>
+          <div class="price">R$ 20<small>/hora</small></div>
+          <ul><li>Motor com assistência na pedalada</li><li>Sobe a Paulista sem suar</li><li>Bateria carregada a cada retirada</li></ul>
+          <a class="btn" href="#simulador" data-bike="eletrica">Simular Elétrica</a>
+        </article>
+        <article class="card">
+          <h3>Cargo</h3>
+          <div class="price">R$ 25<small>/hora</small></div>
+          <ul><li>Bagageiro frontal reforçado</li><li>Leva compras, feira e crianças</li><li>Perfeita para entregas locais</li></ul>
+          <a class="btn ghost" href="#simulador" data-bike="cargo">Simular Cargo</a>
+        </article>
+      </div>
+      <p class="note">Acima de 5 horas de uso, 10% de desconto no valor total.</p>
+    </div>
+  </section>
+
+  <section id="simulador">
+    <div class="wrap">
+      <h2>Simule e reserve sem surpresa</h2>
+      <p class="lead">Digite as horas, escolha a bike e veja o valor na hora. Depois, deixe seu nome na lista de pré-reservas.</p>
+      <div class="panel">
+        <div class="box">
+          <h3>Simulador de preço</h3>
+          <label for="hours">Quantas horas você vai pedalar?</label>
+          <input type="number" id="hours" min="0" max="72" step="0.5" value="2" inputmode="decimal">
+          <label for="bike">Tipo de bike</label>
+          <select id="bike">
+            <option value="urbana">Urbana – R$ 12/h</option>
+            <option value="eletrica">Elétrica – R$ 20/h</option>
+            <option value="cargo">Cargo – R$ 25/h</option>
+          </select>
+          <div class="result" aria-live="polite">
+            <div>Total estimado</div>
+            <div class="total" id="total">R$ 0,00</div>
+            <dl>
+              <dt>Subtotal</dt><dd id="sub">R$ 0,00</dd>
+              <dt>Desconto (acima de 5 h)</dt><dd id="disc">R$ 0,00</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="box" id="reservas">
+          <h3>Pré-reservas</h3>
+          <form class="add" id="form">
+            <input type="text" id="name" placeholder="Seu nome" maxlength="40" aria-label="Seu nome" autocomplete="given-name">
+            <button class="btn" type="submit">Reservar</button>
+          </form>
+          <p class="count" id="count"></p>
+          <p class="empty" id="empty">Ninguém na lista ainda. Seja a primeira pessoa a garantir sua bike.</p>
+          <ul id="list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como" style="background:var(--green-soft)">
+    <div class="wrap">
+      <h2>Como reservar</h2>
+      <p class="lead">Do cadastro ao primeiro pedal em poucos minutos.</p>
+      <ol class="steps">
+        <li><h3>Simule o valor</h3><p>Escolha a bike e as horas para ver quanto vai pagar.</p></li>
+        <li><h3>Entre na pré-reserva</h3><p>Deixe seu nome na lista e a gente avisa quando abrir sua estação.</p></li>
+        <li><h3>Retire na estação</h3><p>Escolha a estação mais próxima, destrave a bike e vá.</p></li>
+        <li><h3>Devolva em qualquer ponto</h3><p>Terminou? Deixe em outra estação e o tempo para de contar.</p></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>EcoBike SP</strong> – bicicletas por hora em São Paulo</span>
+    <span>© 2026 EcoBike SP. Pedale com segurança.</span>
+  </div>
+</footer>
+
+</body>
+</html>

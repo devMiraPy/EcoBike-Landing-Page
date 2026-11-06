@@ -1,0 +1,120 @@
+:root{
+  --bg:#f2f5f2; --surface:#ffffff; --ink:#10302a; --muted:#51675f; --line:#d5ded9;
+  --green:#1d6b52; --green-soft:#dcece5; --red:#d63c2b; --on-red:#fff;
+  --shadow:0 1px 2px rgba(16,48,42,.06),0 8px 24px rgba(16,48,42,.06);
+  --head:"Bricolage Grotesque","Trebuchet MS",sans-serif; --body:"DM Sans",system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1816; --surface:#142623; --ink:#eaf3ef; --muted:#9db4ab; --line:#25403a;
+    --green:#5fd1a4; --green-soft:#183a31; --red:#ff6a56; --on-red:#1a0805;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1816; --surface:#142623; --ink:#eaf3ef; --muted:#9db4ab; --line:#25403a;
+  --green:#5fd1a4; --green-soft:#183a31; --red:#ff6a56; --on-red:#1a0805;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);transition:background .3s,color .3s}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:5rem 0}
+.lead{color:var(--muted);max-width:56ch;margin-top:.9rem}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+.logo{font:800 1.35rem var(--head);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo i{width:14px;height:14px;border-radius:50%;background:var(--red);display:inline-block}
+nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.tools{display:flex;gap:.6rem;align-items:center}
+.icon-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:grid;place-items:center}
+.menu-btn{display:none}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem var(--body);padding:.85rem 1.4rem;border-radius:999px;background:var(--red);color:var(--on-red);text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+
+/* hero */
+.hero{padding:4.5rem 0 0;overflow:hidden}
+.hero h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:800;max-width:14ch}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:46ch;margin:1.4rem 0 2rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.lane{margin-top:4rem;height:72px;background:var(--red);position:relative;display:flex;align-items:center;overflow:hidden}
+.lane::before{content:"";position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,#fff 0 40px,transparent 40px 80px);opacity:.85;animation:dash 4s linear infinite}
+.lane svg{position:absolute;left:12%;bottom:6px;width:120px;color:#fff;animation:ride 9s ease-in-out infinite alternate}
+@keyframes dash{to{background-position:80px 0}}
+@keyframes ride{to{left:78%}}
+
+/* valores */
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;margin-top:3rem}
+.values h3{font-size:1.3rem;margin-bottom:.5rem}
+.values p{color:var(--muted)}
+.values div{border-top:3px solid var(--green);padding-top:1.1rem}
+
+/* planos */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-top:3rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:2rem;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card.pop{border:2px solid var(--red)}
+.card .tag{align-self:flex-start;background:var(--red);color:var(--on-red);font-size:.8rem;font-weight:700;padding:.2rem .7rem;border-radius:999px;margin-bottom:.8rem}
+.card h3{font-size:1.7rem}
+.price{font:800 2.6rem var(--head);margin:.8rem 0 .2rem}
+.price small{font:500 1rem var(--body);color:var(--muted)}
+.card ul{list-style:none;padding:0;margin:1rem 0 1.6rem;display:grid;gap:.5rem;color:var(--muted)}
+.card li::before{content:"✓";color:var(--green);font-weight:700;margin-right:.6rem}
+.card .btn{margin-top:auto;text-align:center}
+.note{margin-top:1.4rem;color:var(--muted)}
+
+/* simulador + reservas */
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:3rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:2rem;box-shadow:var(--shadow)}
+.box h3{font-size:1.5rem;margin-bottom:1.2rem}
+label{display:block;font-weight:700;margin:1rem 0 .4rem}
+input[type=number],input[type=text],select{width:100%;font:inherit;padding:.8rem 1rem;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.result{margin-top:1.6rem;padding:1.3rem;border-radius:16px;background:var(--green-soft)}
+.result .total{font:800 2.6rem var(--head);color:var(--green)}
+.result dl{margin:.6rem 0 0;display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;color:var(--muted);font-size:.95rem}
+.result dd{margin:0;text-align:right}
+.disc{color:var(--red);font-weight:700}
+.add{display:flex;gap:.6rem}
+.add input{flex:1}
+#list{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:.6rem}
+#list li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 1rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);animation:pop .25s}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+#list button{border:0;background:transparent;color:var(--red);font:700 .95rem var(--body);cursor:pointer;padding:.3rem .5rem}
+.empty{color:var(--muted);margin-top:1.2rem}
+.count{color:var(--muted);font-size:.95rem;margin-top:.8rem}
+
+/* como reservar */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-top:3rem;list-style:none;padding:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:4.2rem 1.4rem 1.4rem;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;top:1.2rem;left:1.4rem;width:38px;height:38px;border-radius:50%;background:var(--green);color:var(--bg);display:grid;place-items:center;font:800 1.1rem var(--head)}
+.steps h3{font-size:1.2rem;margin-bottom:.4rem}
+.steps p{color:var(--muted);font-size:.98rem}
+
+footer{border-top:1px solid var(--line);padding:2.5rem 0;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+@media (max-width:860px){
+  .panel{grid-template-columns:1fr}
+  .menu-btn{display:grid}
+  nav{position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem}
+  nav a{display:block;padding:.7rem 0}
+  section{padding:3.5rem 0}
+}
+/* aparecer ao rolar */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
